@@ -170,13 +170,12 @@ def _split_content_type(content_type: str) -> tuple[str, str]:
     :param content_type:
     :return:
     """
-    content_type_pkg = content_type.split('/')
-    if len(content_type_pkg) < 1:
-        return '', ''
-    elif len(content_type_pkg) == 1:
-        return content_type_pkg[0], ''
+    content_type_wrapper = content_type.split('/')
+    n = len(content_type_wrapper)
+    if n <= 1:
+        return content_type_wrapper[0], ''
     else:
-        return content_type_pkg[0], content_type_pkg[1]
+        return content_type_wrapper[0], content_type_wrapper[1]
 
 
 def get_request_handler(
