@@ -163,6 +163,22 @@ async def run_endpoint_function(
         return await run_in_threadpool(dependant.call, **values)
 
 
+def _split_content_type(content_type: str) -> tuple[str, str]:
+    """
+    change content_type into maintype and subtype
+    create by: YZY
+    :param content_type:
+    :return:
+    """
+    content_type_pkg = content_type.split('/')
+    if len(content_type_pkg) < 1:
+        return '', ''
+    elif len(content_type_pkg) == 1:
+        return content_type_pkg[0], ''
+    else:
+        return content_type_pkg[0], content_type_pkg[1]
+
+
 def get_request_handler(
     dependant: Dependant,
     body_field: Optional[ModelField] = None,
@@ -195,23 +211,16 @@ def get_request_handler(
                     assert isinstance(stack, AsyncExitStack)
                     stack.push_async_callback(body.close)
                 else:
-                    body_bytes = await request.body()
-                    if body_bytes:
-                        json_body: Any = Undefined
-                        content_type_value = request.headers.get("content-type")
-                        if not content_type_value:
-                            json_body = await request.json()
+                    content_type_value = request.headers.get("content-type")
+                    if not content_type_value:
+                        body = await request.json()
+                    else:
+                        # update by YZY
+                        maintype, subtype = _split_content_type(content_type_value)
+                        if maintype == 'application' and (subtype == 'json' or subtype.endswith('+json')):
+                            body = await request.json()
                         else:
-                            message = email.message.Message()
-                            message["content-type"] = content_type_value
-                            if message.get_content_maintype() == "application":
-                                subtype = message.get_content_subtype()
-                                if subtype == "json" or subtype.endswith("+json"):
-                                    json_body = await request.json()
-                        if json_body != Undefined:
-                            body = json_body
-                        else:
-                            body = body_bytes
+                            body = await request.body()
         except json.JSONDecodeError as e:
             raise RequestValidationError(
                 [ErrorWrapper(e, ("body", e.pos))], body=e.doc
