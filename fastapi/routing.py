@@ -1,6 +1,5 @@
 import asyncio
 import dataclasses
-import email.message
 import inspect
 import json
 from contextlib import AsyncExitStack
