@@ -169,7 +169,7 @@ def _split_content_type(content_type: str) -> tuple[str, str]:
     :param content_type:
     :return:
     """
-    content_type_wrapper = content_type.split('/')
+    content_type_wrapper = content_type.split(';')[0].split('/')
     n = len(content_type_wrapper)
     if n <= 1:
         return content_type_wrapper[0], ''
