@@ -3,6 +3,25 @@
 ## Latest Changes
 
 
+## 0.92.0
+
+🚨 This is a security fix. Please upgrade as soon as possible.
+
+### Upgrades
+
+* ⬆️ Upgrade Starlette to 0.25.0. PR [#5996](https://github.com/tiangolo/fastapi/pull/5996) by [@tiangolo](https://github.com/tiangolo).
+    * This solves a vulnerability that could allow denial of service attacks by using many small multipart fields/files (parts), consuming high CPU and memory.
+    * Only applications using forms (e.g. file uploads) could be affected.
+    * For most cases, upgrading won't have any breaking changes.
+
+## 0.91.0
+
+### Upgrades
+
+* ⬆️ Upgrade Starlette version to `0.24.0` and refactor internals for compatibility. PR [#5985](https://github.com/tiangolo/fastapi/pull/5985) by [@tiangolo](https://github.com/tiangolo).
+    * This can solve nuanced errors when using middlewares. Before Starlette `0.24.0`, a new instance of each middleware class would be created when a new middleware was added. That normally was not a problem, unless the middleware class expected to be created only once, with only one instance, that happened in some cases. This upgrade would solve those cases (thanks [@adriangb](https://github.com/adriangb)! Starlette PR [#2017](https://github.com/encode/starlette/pull/2017)). Now the middleware class instances are created once, right before the first request (the first time the app is called).
+    * If you depended on that previous behavior, you might need to update your code. As always, make sure your tests pass before merging the upgrade.
+
 ## 0.90.1
 
 ### Upgrades
