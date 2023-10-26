@@ -44,7 +44,7 @@ def get_swagger_ui_html(
             """
         ),
     ],
-    swagger_js_url: Annotated[
+        swagger_js_url: Annotated[
         str,
         Doc(
             """
@@ -53,7 +53,7 @@ def get_swagger_ui_html(
             It is normally set to a CDN URL.
             """
         ),
-    ] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui-bundle.js",
+    ] = "https://cdn.bootcdn.net/ajax/libs/swagger-ui/5.9.1/swagger-ui-bundle.js",
     swagger_css_url: Annotated[
         str,
         Doc(
@@ -63,7 +63,7 @@ def get_swagger_ui_html(
             It is normally set to a CDN URL.
             """
         ),
-    ] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui.css",
+    ] = "https://cdn.bootcdn.net/ajax/libs/swagger-ui/5.9.1/swagger-ui.css",
     swagger_favicon_url: Annotated[
         str,
         Doc(
@@ -188,8 +188,8 @@ def get_redoc_html(
             It is normally set to a CDN URL.
             """
         ),
-    ] = "https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js",
-    redoc_favicon_url: Annotated[
+    ] = "https://cdn.redoc.ly/redoc/v2.1.3/bundles/redoc.standalone.js",
+        redoc_favicon_url: Annotated[
         str,
         Doc(
             """
