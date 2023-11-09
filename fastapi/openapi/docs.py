@@ -53,7 +53,7 @@ def get_swagger_ui_html(
             It is normally set to a CDN URL.
             """
         ),
-    ] = "https://cdn.bootcdn.net/ajax/libs/swagger-ui/5.9.1/swagger-ui-bundle.js",
+    ] = "https://cdn.bootcdn.net/ajax/libs/swagger-ui/5.9.0/swagger-ui-bundle.js",
     swagger_css_url: Annotated[
         str,
         Doc(
@@ -63,7 +63,7 @@ def get_swagger_ui_html(
             It is normally set to a CDN URL.
             """
         ),
-    ] = "https://cdn.bootcdn.net/ajax/libs/swagger-ui/5.9.1/swagger-ui.css",
+    ] = "https://cdn.bootcdn.net/ajax/libs/swagger-ui/5.9.0/swagger-ui.css",
     swagger_favicon_url: Annotated[
         str,
         Doc(
