@@ -532,8 +532,8 @@ async def solve_dependencies(
     values: Dict[str, Any] = {}
     errors: List[Any] = []
     if response is None:
-        response = Response()
-        del response.headers["content-length"]
+        # ignore init_header; update by yzy
+        response = Response.__new__(Response)
         response.status_code = None  # type: ignore
     dependency_cache = dependency_cache or {}
     sub_dependant: Dependant
