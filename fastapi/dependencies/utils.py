@@ -535,6 +535,7 @@ async def solve_dependencies(
         # ignore init_header; update by yzy
         response = Response.__new__(Response)
         response.status_code = None  # type: ignore
+        response.raw_headers = []
     dependency_cache = dependency_cache or {}
     sub_dependant: Dependant
     for sub_dependant in dependant.dependencies:
