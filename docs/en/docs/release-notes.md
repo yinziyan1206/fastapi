@@ -7,12 +7,40 @@ hide:
 
 ## Latest Changes
 
+### Translations
+
+* 🌐 Remove Portuguese translation for `docs/pt/docs/deployment.md`. PR [#12427](https://github.com/fastapi/fastapi/pull/12427) by [@ceb10n](https://github.com/ceb10n).
+*  🌐 Add Portuguese translation for `docs/pt/docs/tutorial/body-updates.md`. PR [#12381](https://github.com/fastapi/fastapi/pull/12381) by [@andersonrocha0](https://github.com/andersonrocha0).
+* 🌐 Add Portuguese translation for `docs/pt/docs/advanced/response-cookies.md`. PR [#12417](https://github.com/fastapi/fastapi/pull/12417) by [@Paulofalcao2002](https://github.com/Paulofalcao2002).
+
+### Internal
+
+* 🔧 Update team, include YuriiMotov 🚀. PR [#12453](https://github.com/fastapi/fastapi/pull/12453) by [@tiangolo](https://github.com/tiangolo).
+* 👷 Refactor label-approved, make it an internal script instead of an external GitHub Action. PR [#12280](https://github.com/fastapi/fastapi/pull/12280) by [@tiangolo](https://github.com/tiangolo).
+* 👷 Fix smokeshow, checkout files on CI. PR [#12434](https://github.com/fastapi/fastapi/pull/12434) by [@tiangolo](https://github.com/tiangolo).
+* 👷 Use uv in CI. PR [#12281](https://github.com/fastapi/fastapi/pull/12281) by [@tiangolo](https://github.com/tiangolo).
+* ⬆ Update httpx requirement from <0.25.0,>=0.23.0 to >=0.23.0,<0.28.0. PR [#11509](https://github.com/fastapi/fastapi/pull/11509) by [@dependabot[bot]](https://github.com/apps/dependabot).
+
+## 0.115.2
+
+### Upgrades
+
+* ⬆️ Upgrade Starlette to `>=0.37.2,<0.41.0`. PR [#12431](https://github.com/fastapi/fastapi/pull/12431) by [@tiangolo](https://github.com/tiangolo).
+
+## 0.115.1
+
+### Fixes
+
+* 🐛 Fix openapi generation with responses kwarg. PR [#10895](https://github.com/fastapi/fastapi/pull/10895) by [@flxdot](https://github.com/flxdot).
+* 🐛 Remove `Required` shadowing from fastapi using Pydantic v2. PR [#12197](https://github.com/fastapi/fastapi/pull/12197) by [@pachewise](https://github.com/pachewise).
+
 ### Refactors
 
 * ♻️ Update type annotations for improved `python-multipart`. PR [#12407](https://github.com/fastapi/fastapi/pull/12407) by [@tiangolo](https://github.com/tiangolo).
 
 ### Docs
 
+* ✨ Add new tutorial for SQL databases with SQLModel. PR [#12285](https://github.com/fastapi/fastapi/pull/12285) by [@tiangolo](https://github.com/tiangolo).
 * 📝 Add External Link: How to profile a FastAPI asynchronous request. PR [#12389](https://github.com/fastapi/fastapi/pull/12389) by [@brouberol](https://github.com/brouberol).
 * 🔧 Remove `base_path` for `mdx_include` Markdown extension in MkDocs. PR [#12391](https://github.com/fastapi/fastapi/pull/12391) by [@tiangolo](https://github.com/tiangolo).
 * 📝 Update link to Swagger UI configuration docs. PR [#12264](https://github.com/fastapi/fastapi/pull/12264) by [@makisukurisu](https://github.com/makisukurisu).
@@ -39,6 +67,7 @@ hide:
 
 ### Internal
 
+* ⬆ [pre-commit.ci] pre-commit autoupdate. PR [#12396](https://github.com/fastapi/fastapi/pull/12396) by [@pre-commit-ci[bot]](https://github.com/apps/pre-commit-ci).
 * 🔨 Add script to generate variants of files. PR [#12405](https://github.com/fastapi/fastapi/pull/12405) by [@tiangolo](https://github.com/tiangolo).
 * 🔧 Add speakeasy-api to `sponsors_badge.yml`. PR [#12404](https://github.com/fastapi/fastapi/pull/12404) by [@tiangolo](https://github.com/tiangolo).
 * ➕ Add docs dependency: markdown-include-variants. PR [#12399](https://github.com/fastapi/fastapi/pull/12399) by [@tiangolo](https://github.com/tiangolo).
