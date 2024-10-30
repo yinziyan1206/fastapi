@@ -1,16 +1,10 @@
-# 教學 - 使用者指南
+# FastAPI CLI
 
-本教學將一步一步展示如何使用 **FastAPI** 及其大多數功能。
+**FastAPI CLI**는 FastAPI 애플리케이션을 실행하고, 프로젝트를 관리하는 등 다양한 작업을 수행할 수 있는 커맨드 라인 프로그램입니다.
 
-每個部分都是在前一部分的基礎上逐步建置的，但內容結構是按主題分開的，因此你可以直接跳到任何特定的部分，解決你具體的 API 需求。
+FastAPI를 설치할 때 (예: `pip install "fastapi[standard]"` 명령어를 사용할 경우), `fastapi-cli`라는 패키지가 포함됩니다. 이 패키지는 터미널에서 사용할 수 있는 `fastapi` 명령어를 제공합니다.
 
-它也被設計成可作為未來的參考，讓你隨時回來查看所需的內容。
-
-## 運行程式碼
-
-所有程式碼區塊都可以直接複製和使用（它們實際上是經過測試的 Python 檔案）。
-
-要運行任何範例，請將程式碼複製到 `main.py` 檔案，並使用以下命令啟動 `fastapi dev`：
+개발용으로 FastAPI 애플리케이션을 실행하려면 다음과 같이 `fastapi dev` 명령어를 사용할 수 있습니다:
 
 <div class="termy">
 
@@ -56,47 +50,34 @@ $ <font color="#4E9A06">fastapi</font> dev <u style="text-decoration-style:singl
 <font color="#4E9A06">INFO</font>:     Started server process [<font color="#06989A">2265873</font>]
 <font color="#4E9A06">INFO</font>:     Waiting for application startup.
 <font color="#4E9A06">INFO</font>:     Application startup complete.
-</pre>
 ```
 
 </div>
 
-**強烈建議**你編寫或複製程式碼、進行修改並在本地端運行。
+`fastapi`라고 불리는 명령어 프로그램은 **FastAPI CLI**입니다.
 
-在編輯器中使用它，才能真正體會到 FastAPI 的好處，可以看到你只需編寫少量程式碼，以及所有的型別檢查、自動補齊等功能。
+FastAPI CLI는 Python 프로그램의 경로(예: `main.py`)를 인수로 받아, `FastAPI` 인스턴스(일반적으로 `app`으로 명명)를 자동으로 감지하고 올바른 임포트 과정을 결정한 후 이를 실행합니다.
 
----
+프로덕션 환경에서는 `fastapi run` 명령어를 사용합니다. 🚀
 
-## 安裝 FastAPI
+내부적으로, **FastAPI CLI**는 고성능의, 프로덕션에 적합한, ASGI 서버인 <a href="https://www.uvicorn.org" class="external-link" target="_blank">Uvicorn</a>을 사용합니다. 😎
 
-第一步是安裝 FastAPI。
+## `fastapi dev`
 
-確保你建立一個[虛擬環境](../virtual-environments.md){.internal-link target=_blank}，啟用它，然後**安裝 FastAPI**：
+`fastapi dev` 명령을 실행하면 개발 모드가 시작됩니다.
 
-<div class="termy">
+기본적으로 **자동 재시작(auto-reload)** 기능이 활성화되어, 코드에 변경이 생기면 서버를 자동으로 다시 시작합니다. 하지만 이 기능은 리소스를 많이 사용하며, 비활성화했을 때보다 안정성이 떨어질 수 있습니다. 따라서 개발 환경에서만 사용하는 것이 좋습니다. 또한, 서버는 컴퓨터가 자체적으로 통신할 수 있는 IP 주소(`localhost`)인 `127.0.0.1`에서 연결을 대기합니다.
 
-```console
-$ pip install "fastapi[standard]"
+## `fastapi run`
 
----> 100%
-```
+`fastapi run` 명령을 실행하면 기본적으로 프로덕션 모드로 FastAPI가 시작됩니다.
 
-</div>
+기본적으로 **자동 재시작(auto-reload)** 기능이 비활성화되어 있습니다. 또한, 사용 가능한 모든 IP 주소인 `0.0.0.0`에서 연결을 대기하므로 해당 컴퓨터와 통신할 수 있는 모든 사람이 공개적으로 액세스할 수 있습니다. 이는 일반적으로 컨테이너와 같은 프로덕션 환경에서 실행하는 방법입니다.
 
-/// note
+애플리케이션을 배포하는 방식에 따라 다르지만, 대부분 "종료 프록시(termination proxy)"를 활용해 HTTPS를 처리하는 것이 좋습니다. 배포 서비스 제공자가 이 작업을 대신 처리해줄 수도 있고, 직접 설정해야 할 수도 있습니다.
 
-當你使用 `pip install "fastapi[standard]"` 安裝時，會包含一些預設的可選標準相依項。
+/// tip
 
-如果你不想包含那些可選的相依項，你可以使用 `pip install fastapi` 來安裝。
+자세한 내용은 [deployment documentation](deployment/index.md){.internal-link target=\_blank}에서 확인할 수 있습니다.
 
 ///
-
-## 進階使用者指南
-
-還有一個**進階使用者指南**你可以稍後閱讀。
-
-**進階使用者指南**建立在這個教學之上，使用相同的概念，並教你一些額外的功能。
-
-但首先你應該閱讀**教學 - 使用者指南**（你正在閱讀的內容）。
-
-它被設計成你可以使用**教學 - 使用者指南**來建立一個完整的應用程式，然後根據你的需求，使用一些額外的想法來擴展它。
